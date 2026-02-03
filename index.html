@@ -19,7 +19,7 @@
 
         <div class="profile-text">
           <h1>Rowell Hans P. Osinsao</h1>
-          <p class="sub">BS Computer Science Graduate • Mobile Application Development • Entry-Level </p>
+          <p class="sub">BS Computer Science Graduate • Mobile Application Development • Entry-Level</p>
 
           <div class="actions">
             <a class="btn primary" href="#projects">View Projects</a>
@@ -49,7 +49,7 @@
       <!-- LEFT COLUMN -->
       <div class="stack">
 
-        <!-- About (SUMMARY VERSION) -->
+        <!-- Summary -->
         <section class="card snap" id="about">
           <div class="row">
             <h2>Summary</h2>
@@ -65,12 +65,16 @@
 
           <div class="group">
             <h3>Strengths</h3>
-            <div class="tags">
+            <div class="tags" id="strengthTags">
               <span class="tag">Clean UI</span>
               <span class="tag">Mobile-first</span>
               <span class="tag">System-focused</span>
               <span class="tag">Fast learner</span>
             </div>
+
+            <p class="hint">
+              If you still see “mkdir …” here, search your HTML for <span class="mono">mkdir</span> and delete that tag line.
+            </p>
           </div>
         </section>
 
@@ -104,6 +108,7 @@
             <h3>Tools</h3>
             <div class="tags">
               <span class="tag">Android Studio</span>
+              <span class="tag">Git</span>
               <span class="tag">GitHub</span>
               <span class="tag">VS Code</span>
             </div>
@@ -119,7 +124,7 @@
           </div>
         </section>
 
-        <!-- Projects (CLICK CARD -> GitHub, DESCRIPTION ONLY) -->
+        <!-- Featured Projects -->
         <section class="card snap" id="projects">
           <div class="row">
             <h2>Featured Projects</h2>
@@ -132,7 +137,6 @@
 
           <div class="cards-2">
 
-            <!-- Project 1: Emergency -->
             <article
               class="mini-card project-card"
               role="link"
@@ -142,13 +146,12 @@
             >
               <h4>Marikina Emergency Response</h4>
               <p class="muted">
-                An emergency response app where users can set up a profile, reach services like BFP and 161 Rescue,
-                and review their report history. Reports are stored automatically, while admin accounts update report
-                statuses to keep tracking accurate and reliable.
+                Emergency response app: user profile, access services (BFP / 161 Rescue), report history tracking.
+                Admin updates report statuses for accurate monitoring.
               </p>
+              <span class="mini">Open on GitHub</span>
             </article>
 
-            <!-- Project 2: POS -->
             <article
               class="mini-card project-card"
               role="link"
@@ -158,10 +161,10 @@
             >
               <h4>RoNyPOS</h4>
               <p class="muted">
-                A POS system with a selling module that computes totals accurately, organizes items into clear categories,
-                and generates outputs automatically. It also includes maintenance features like expiration tracking with
-                add/remove controls, plus sales reports that calculate total payments automatically.
+                POS system: selling module, category organization, auto outputs. Includes maintenance (expiration tracking)
+                and sales reports with automatic totals.
               </p>
+              <span class="mini">Open on GitHub</span>
             </article>
 
           </div>
@@ -216,9 +219,9 @@
               <div class="t-body">
                 <div class="t-top">
                   <strong>BS Computer Science</strong>
-                  <span class="year">2025</span>
+                  <span class="year">2021–2025</span>
                 </div>
-                <p class="muted">STI College Marikina</p>
+                <p class="muted">STI College Marikina City</p>
               </div>
             </div>
 
@@ -227,9 +230,9 @@
               <div class="t-body">
                 <div class="t-top">
                   <strong>Application Developer (Projects)</strong>
-                  <span class="year">2025</span>
+                  <span class="year">2024–2025</span>
                 </div>
-                <p class="muted">Academic + personal projects focused on real usability.</p>
+                <p class="muted">Academic + personal projects focused on usability and real use-cases.</p>
               </div>
             </div>
 
@@ -237,8 +240,8 @@
               <div class="t-dot" aria-hidden="true"></div>
               <div class="t-body">
                 <div class="t-top">
-                  <strong>Entry-Level / Internship</strong>
-                  <span class="year">2025–2026</span>
+                  <strong>Entry-Level</strong>
+                  <span class="year">Now</span>
                 </div>
                 <p class="muted">Ready to contribute and grow with a dev team.</p>
               </div>
@@ -246,7 +249,31 @@
           </div>
         </section>
 
-        <!-- Contact (PITCH REMOVED) -->
+        <!-- Education Background (TERMINAL STYLE) -->
+        <section class="card snap" id="education">
+          <div class="row">
+            <h2>Education Background</h2>
+          </div>
+          <p class="muted small-note">Academic background (formatted like a terminal for a clean dev-style look).</p>
+
+          <pre class="terminal" aria-label="Education terminal output"><code>$ education --list
+
+[✓] BS Computer Science
+    STI College Marikina City
+    September 2021 - August 2025
+
+[✓] Senior High School - ICT Strand
+    AMA College Makati City
+    2019 - 2021
+
+[✓] Junior High School
+    Arellano University Jose Abad Santos Campus
+    2016 - 2019
+
+$</code></pre>
+        </section>
+
+        <!-- Contact -->
         <section class="card snap" id="contact">
           <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap:14px;">
             <div>
@@ -307,8 +334,8 @@
             <h2>Summary</h2>
             <p class="muted">Quick intro</p>
             <p>
-              Hi! I’m Rowell Hans P. Osinsao — a BS Computer Science graduate focused on building practical web systems
-              like POS and emergency response apps. I’m currently looking for an entry-level or internship role.
+              Hi! I’m Rowell Hans P. Osinsao — a BS Computer Science graduate focused on building practical systems
+              like POS and emergency response apps. I’m currently looking for an entry-level role.
             </p>
           </section>
 
@@ -318,6 +345,16 @@
             <ul class="bullets">
               <li><strong>Marikina Emergency Response</strong> — report history + admin status tracking</li>
               <li><strong>RoNyPOS</strong> — POS + maintenance + auto sales reporting</li>
+            </ul>
+          </section>
+
+          <section class="slide">
+            <h2>Education</h2>
+            <p class="muted">Academic background</p>
+            <ul class="bullets">
+              <li><strong>BS Computer Science</strong> — STI College Marikina City (2021–2025)</li>
+              <li><strong>Senior High (ICT)</strong> — AMA College Makati City (2019–2021)</li>
+              <li><strong>Junior High</strong> — Arellano University JAS Campus (2016–2019)</li>
             </ul>
           </section>
 
