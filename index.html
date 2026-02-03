@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rowell Hans P. Osinsao | Portfolio</title>
+  <meta name="description" content="Rowell Hans P. Osinsao — BS Computer Science graduate focused on web development. Portfolio, projects, and contact." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">
+          <img src="./assets/profile.jpg" alt="Rowell Hans Photo" />
+        </div>
+
+        <div class="profile-text">
+          <h1>Rowell Hans P. Osinsao</h1>
+          <p class="sub">BS Computer Science Graduate • Mobile Application Development • Entry-Level </p>
+
+          <div class="actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+
+            <a class="btn" href="assets/Osinsao_RowellHans_Resume.pdf" target="_blank" rel="noopener">
+              View Resume
+            </a>
+
+            <button class="btn" id="themeToggle" type="button" aria-pressed="false">
+              Dark Mode
+            </button>
+
+            <button class="btn" data-open-slider type="button">
+              Quick Overview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container space">
+
+    <!-- 2-column layout -->
+    <section class="grid-2">
+
+      <!-- LEFT COLUMN -->
+      <div class="stack">
+
+        <!-- About (SUMMARY VERSION) -->
+        <section class="card snap" id="about">
+          <div class="row">
+            <h2>Summary</h2>
+            <button class="link-btn" data-open-slider type="button">Open Slider</button>
+          </div>
+
+          <p>
+            I’m a <strong>BS Computer Science graduate</strong> focused on building practical web systems, including
+            <strong>POS</strong> and <strong>emergency response</strong> applications. I create clean, responsive interfaces
+            and functional features using modern tools, and I’m currently seeking an <strong>entry-level</strong>
+            role where I can contribute to real projects and grow with a dev team.
+          </p>
+
+          <div class="group">
+            <h3>Strengths</h3>
+            <div class="tags">mkdir C:\Users\ROHANS\OneDrive\Desktop\Port
+              <span class="tag">Clean UI</span>
+              <span class="tag">Mobile-first</span>
+              <span class="tag">System-focused</span>
+              <span class="tag">Fast learner</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="card snap" id="skills">
+          <div class="row">
+            <h2>Tech Stack</h2>
+            <p class="muted small-note">Grouped by where I use them</p>
+          </div>
+
+          <div class="group">
+            <h3>Frontend</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Backend / Services</h3>
+            <div class="tags">
+              <span class="tag">MySQL</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Tools</h3>
+            <div class="tags">
+              <span class="tag">Android Studio</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Core Strengths</h3>
+            <div class="tags">
+              <span class="tag">Application Development</span>
+              <span class="tag">Front-End Development</span>
+              <span class="tag">Troubleshooting</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects (CLICK CARD -> GitHub, DESCRIPTION ONLY) -->
+        <section class="card snap" id="projects">
+          <div class="row">
+            <h2>Featured Projects</h2>
+
+            <div class="row-actions">
+              <a class="link" href="https://github.com/rhcodes9" target="_blank" rel="noopener">See all</a>
+              <button class="btn small" data-open-slider type="button">Open Slider</button>
+            </div>
+          </div>
+
+          <div class="cards-2">
+
+            <!-- Project 1: Emergency -->
+            <article
+              class="mini-card project-card"
+              role="link"
+              tabindex="0"
+              data-url="https://github.com/rhcodes9/Marikina-Emergency"
+              aria-label="Open GitHub repository: Marikina Emergency Response"
+            >
+              <h4>Marikina Emergency Response</h4>
+              <p class="muted">
+                An emergency response app where users can set up a profile, reach services like BFP and 161 Rescue,
+                and review their report history. Reports are stored automatically, while admin accounts update report
+                statuses to keep tracking accurate and reliable.
+              </p>
+            </article>
+
+            <!-- Project 2: POS -->
+            <article
+              class="mini-card project-card"
+              role="link"
+              tabindex="0"
+              data-url="https://github.com/rhcodes9/RoNyPOS"
+              aria-label="Open GitHub repository: RoNyPOS"
+            >
+              <h4>RoNyPOS</h4>
+              <p class="muted">
+                A POS system with a selling module that computes totals accurately, organizes items into clear categories,
+                and generates outputs automatically. It also includes maintenance features like expiration tracking with
+                add/remove controls, plus sales reports that calculate total payments automatically.
+              </p>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="card snap" id="gallery">
+          <div class="row">
+            <h2>Gallery</h2>
+            <p class="muted small-note">Screenshots / UI previews</p>
+          </div>
+
+          <div class="gslider" aria-label="Gallery carousel">
+            <button class="gbtn" id="gPrev" type="button" aria-label="Previous image">‹</button>
+
+            <div class="gviewport">
+              <div class="gtrack" id="gTrack" tabindex="0" aria-label="Scrollable gallery">
+                <img class="gimg" src="./assets/gallery1.jpg" alt="Gallery image 1">
+                <img class="gimg" src="./assets/gallery2.jpg" alt="Gallery image 2">
+                <img class="gimg" src="./assets/gallery3.jpg" alt="Gallery image 3">
+                <img class="gimg" src="./assets/gallery4.jpg" alt="Gallery image 4">
+                <img class="gimg" src="./assets/gallery5.jpg" alt="Gallery image 5">
+                <img class="gimg" src="./assets/gallery6.jpg" alt="Gallery image 6">
+                <img class="gimg" src="./assets/gallery7.jpg" alt="Gallery image 7">
+                <img class="gimg" src="./assets/gallery8.jpg" alt="Gallery image 8">
+              </div>
+            </div>
+
+            <button class="gbtn" id="gNext" type="button" aria-label="Next image">›</button>
+          </div>
+        </section>
+
+      </div><!-- end LEFT -->
+
+      <!-- RIGHT COLUMN -->
+      <div class="stack">
+
+        <!-- Journey -->
+        <section class="card snap" id="journey">
+          <div class="row">
+            <h2>Journey</h2>
+            <button class="link-btn" data-open-slider type="button">Open Slider</button>
+          </div>
+
+          <p class="muted" style="margin-bottom:10px;">
+            A short timeline of what I’ve built and where I’m going next.
+          </p>
+
+          <div class="timeline">
+            <div class="t-item">
+              <div class="t-dot" aria-hidden="true"></div>
+              <div class="t-body">
+                <div class="t-top">
+                  <strong>BS Computer Science</strong>
+                  <span class="year">2025</span>
+                </div>
+                <p class="muted">STI College Marikina</p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-dot" aria-hidden="true"></div>
+              <div class="t-body">
+                <div class="t-top">
+                  <strong>Application Developer (Projects)</strong>
+                  <span class="year">2025</span>
+                </div>
+                <p class="muted">Academic + personal projects focused on real usability.</p>
+              </div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-dot" aria-hidden="true"></div>
+              <div class="t-body">
+                <div class="t-top">
+                  <strong>Entry-Level / Internship</strong>
+                  <span class="year">2025–2026</span>
+                </div>
+                <p class="muted">Ready to contribute and grow with a dev team.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact (PITCH REMOVED) -->
+        <section class="card snap" id="contact">
+          <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap:14px;">
+            <div>
+              <h2>Links</h2>
+              <div class="social">
+                <a class="slink" href="https://www.linkedin.com/in/rowell-hans-osinsao-724928327/" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="slink" href="https://github.com/rhcodes9" target="_blank" rel="noopener">GitHub</a>
+                <a class="slink" href="https://www.instagram.com/rhnpadilla/" target="_blank" rel="noopener">Instagram</a>
+                <a class="slink" href="https://web.facebook.com/itsmerhn" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+
+            <div>
+              <h2>Contact</h2>
+              <p class="muted">Email</p>
+              <p class="mono"><a class="link" href="mailto:rowellhansosinsao@gmail.com">rowellhansosinsao@gmail.com</a></p>
+
+              <p class="muted">Phone</p>
+              <p class="mono"><a class="link" href="tel:+639690135772">09690135772</a></p>
+
+              <div style="margin-top:12px;">
+                <a class="btn primary" href="assets/Osinsao_RowellHans_Resume.pdf" target="_blank" rel="noopener">
+                  Open Resume PDF
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- end RIGHT -->
+
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Rowell Hans P. Osinsao. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <!-- SLIDER OVERLAY -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Information slider">
+      <div class="modal-head">
+        <strong>Quick Overview</strong>
+        <div class="modal-actions">
+          <button class="btn small" id="prevBtn" type="button">Prev</button>
+          <button class="btn small" id="nextBtn" type="button">Next</button>
+          <button class="btn small" id="closeBtn" type="button">Close</button>
+        </div>
+      </div>
+
+      <div class="dots" id="dots" aria-label="Slide indicators"></div>
+
+      <div class="slider">
+        <div class="track" id="track">
+
+          <section class="slide">
+            <h2>Summary</h2>
+            <p class="muted">Quick intro</p>
+            <p>
+              Hi! I’m Rowell Hans P. Osinsao — a BS Computer Science graduate focused on building practical web systems
+              like POS and emergency response apps. I’m currently looking for an entry-level or internship role.
+            </p>
+          </section>
+
+          <section class="slide">
+            <h2>Projects</h2>
+            <p class="muted">Highlighted works</p>
+            <ul class="bullets">
+              <li><strong>Marikina Emergency Response</strong> — report history + admin status tracking</li>
+              <li><strong>RoNyPOS</strong> — POS + maintenance + auto sales reporting</li>
+            </ul>
+          </section>
+
+          <section class="slide">
+            <h2>Contact</h2>
+            <p class="muted">Let’s connect</p>
+            <p><strong>Email:</strong> rowellhansosinsao@gmail.com</p>
+            <p><strong>Phone:</strong> 09690135772</p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
