@@ -1,31 +1,31 @@
-// ===== Helpers =====
-const $ = (q, root = document) => root.querySelector(q);
-const $$ = (q, root = document) => Array.from(root.querySelectorAll(q));
+// -------- Helpers --------
+const $ = (q, root=document) => root.querySelector(q);
+const $$ = (q, root=document) => [...root.querySelectorAll(q)];
 
-// ===== Footer Year =====
+// -------- Year --------
 const yearEl = $("#year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===== Theme Toggle =====
+// -------- Theme Toggle --------
 const themeToggle = $("#themeToggle");
 const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark") document.body.classList.add("dark");
+if (savedTheme === "light") document.body.classList.add("light");
 
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const isDark = document.body.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    themeToggle.setAttribute("aria-pressed", String(isDark));
-    themeToggle.textContent = isDark ? "Light Mode" : "Dark Mode";
-  });
-
-  // set initial text
-  const isDarkNow = document.body.classList.contains("dark");
-  themeToggle.setAttribute("aria-pressed", String(isDarkNow));
-  themeToggle.textContent = isDarkNow ? "Light Mode" : "Dark Mode";
+function updateThemeButton(){
+  const isLight = document.body.classList.contains("light");
+  if (!themeToggle) return;
+  themeToggle.textContent = isLight ? "Dark Mode" : "Light Mode";
+  themeToggle.setAttribute("aria-pressed", String(!isLight));
 }
+updateThemeButton();
 
-// ===== Project Cards Click =====
+themeToggle?.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+  updateThemeButton();
+});
+
+// -------- Project Cards (click + keyboard) --------
 $$(".project-card").forEach(card => {
   const open = () => {
     const url = card.getAttribute("data-url");
@@ -40,97 +40,102 @@ $$(".project-card").forEach(card => {
   });
 });
 
-// ===== Modal Slider =====
+// -------- Gallery Buttons --------
+const gTrack = $("#gTrack");
+$("#gPrev")?.addEventListener("click", () => gTrack?.scrollBy({ left: -280, behavior: "smooth" }));
+$("#gNext")?.addEventListener("click", () => gTrack?.scrollBy({ left:  280, behavior: "smooth" }));
+
+// -------- Slider / Modal --------
 const overlay = $("#overlay");
 const track = $("#track");
 const dotsWrap = $("#dots");
+const openBtns = $$("[data-open-slider]");
+const closeBtn = $("#closeBtn");
 const prevBtn = $("#prevBtn");
 const nextBtn = $("#nextBtn");
-const closeBtn = $("#closeBtn");
-const openBtns = $$("[data-open-slider]");
 
-let slideIndex = 0;
+let index = 0;
 
-function slides() {
-  return track ? $$(".slide", track) : [];
+function slideCount(){
+  return track ? track.children.length : 0;
 }
 
-function setSlide(i) {
-  const s = slides();
-  if (!track || s.length === 0) return;
-
-  slideIndex = Math.max(0, Math.min(i, s.length - 1));
-  track.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-  // dots
-  if (dotsWrap) {
-    $$(".dot", dotsWrap).forEach((d, idx) => d.classList.toggle("active", idx === slideIndex));
-  }
-
-  // buttons
-  if (prevBtn) prevBtn.disabled = slideIndex === 0;
-  if (nextBtn) nextBtn.disabled = slideIndex === s.length - 1;
-}
-
-function buildDots() {
+function renderDots(){
   if (!dotsWrap) return;
   dotsWrap.innerHTML = "";
-  slides().forEach((_, idx) => {
-    const d = document.createElement("button");
-    d.type = "button";
-    d.className = "dot" + (idx === 0 ? " active" : "");
-    d.setAttribute("aria-label", `Go to slide ${idx + 1}`);
-    d.addEventListener("click", () => setSlide(idx));
+  const count = slideCount();
+  for (let i=0; i<count; i++){
+    const d = document.createElement("div");
+    d.className = "dot" + (i === index ? " active" : "");
+    d.addEventListener("click", () => { index = i; updateSlider(); });
     dotsWrap.appendChild(d);
-  });
+  }
 }
 
-function openModal() {
+function updateSlider(){
+  if (!track) return;
+  track.style.transform = `translateX(-${index * 100}%)`;
+  renderDots();
+}
+
+function openModal(){
   if (!overlay) return;
-  overlay.classList.add("open");
+  overlay.classList.add("show");
   overlay.setAttribute("aria-hidden", "false");
-  slideIndex = 0;
-  buildDots();
-  setSlide(0);
-  document.body.style.overflow = "hidden";
+  index = 0;
+  updateSlider();
 }
 
-function closeModal() {
+function closeModal(){
   if (!overlay) return;
-  overlay.classList.remove("open");
+  overlay.classList.remove("show");
   overlay.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
 }
 
-openBtns.forEach(btn => btn.addEventListener("click", openModal));
-if (closeBtn) closeBtn.addEventListener("click", closeModal);
+openBtns.forEach(b => b.addEventListener("click", openModal));
+closeBtn?.addEventListener("click", closeModal);
 
-if (prevBtn) prevBtn.addEventListener("click", () => setSlide(slideIndex - 1));
-if (nextBtn) nextBtn.addEventListener("click", () => setSlide(slideIndex + 1));
-
-if (overlay) {
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) closeModal();
-  });
-}
-
-document.addEventListener("keydown", (e) => {
-  if (!overlay || !overlay.classList.contains("open")) return;
-  if (e.key === "Escape") closeModal();
-  if (e.key === "ArrowLeft") setSlide(slideIndex - 1);
-  if (e.key === "ArrowRight") setSlide(slideIndex + 1);
+overlay?.addEventListener("click", (e) => {
+  if (e.target === overlay) closeModal();
 });
 
-// ===== Gallery Controls =====
-const gTrack = $("#gTrack");
-const gPrev = $("#gPrev");
-const gNext = $("#gNext");
+document.addEventListener("keydown", (e) => {
+  if (!overlay?.classList.contains("show")) return;
+  if (e.key === "Escape") closeModal();
+  if (e.key === "ArrowLeft") prevBtn?.click();
+  if (e.key === "ArrowRight") nextBtn?.click();
+});
 
-function scrollGallery(dir) {
-  if (!gTrack) return;
-  const amount = Math.max(240, Math.floor(gTrack.clientWidth * 0.8));
-  gTrack.scrollBy({ left: dir * amount, behavior: "smooth" });
-}
+prevBtn?.addEventListener("click", () => {
+  const count = slideCount();
+  if (!count) return;
+  index = (index - 1 + count) % count;
+  updateSlider();
+});
 
-if (gPrev) gPrev.addEventListener("click", () => scrollGallery(-1));
-if (gNext) gNext.addEventListener("click", () => scrollGallery(1));
+nextBtn?.addEventListener("click", () => {
+  const count = slideCount();
+  if (!count) return;
+  index = (index + 1) % count;
+  updateSlider();
+});
+
+// -------- Scroll Animations (reveal on scroll) --------
+const revealTargets = [
+  ...document.querySelectorAll(".card"),
+  ...document.querySelectorAll(".mini-card"),
+  ...document.querySelectorAll(".gslider"),
+];
+
+revealTargets.forEach(el => el.classList.add("reveal"));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      io.unobserve(entry.target); // animate once
+    }
+  });
+}, { threshold: 0.12 });
+
+revealTargets.forEach(el => io.observe(el));
